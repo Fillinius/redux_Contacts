@@ -1,16 +1,25 @@
-import React, {memo, useEffect, useState} from 'react';
-import {CommonPageProps} from './types';
-import {Col, Row} from 'react-bootstrap';
-import {ContactCard} from 'src/components/ContactCard';
-import {ContactDto} from 'src/types/dto/ContactDto';
+import { useEffect, useState } from 'react'
 
-export const FavoritListPage = memo<CommonPageProps>(({
-  favoriteContactsState,
-  contactsState
-}) => {
+import { Col, Row } from 'react-bootstrap'
+import { ContactCard } from 'src/components/ContactCard'
+import { ContactDto } from 'src/types/dto/ContactDto'
+import { useSelector } from 'react-redux'
+import { FavoriteContactsDto } from 'src/types/dto/FavoriteContactsDto'
+
+export const FavoritListPage = () => {
+  // переход на получение данных из reducer
+  const contactsState = useSelector(
+    (state: { contacts: ContactDto[] }) => state.contacts
+  )
+  const favoriteContactsState = useSelector(
+    (state: { favoriteContacts: FavoriteContactsDto }) => state.favoriteContacts
+  )
+  //
   const [contacts, setContacts] = useState<ContactDto[]>([])
   useEffect(() => {
-    setContacts(() => contactsState[0].filter(({id}) => favoriteContactsState[0].includes(id)));
+    setContacts(() =>
+      contactsState.filter(({ id }) => favoriteContactsState[0].includes(id))
+    )
   }, [contactsState, favoriteContactsState])
   return (
     <Row xxl={4} className="g-4">
@@ -20,5 +29,5 @@ export const FavoritListPage = memo<CommonPageProps>(({
         </Col>
       ))}
     </Row>
-  );
-})
+  )
+}
