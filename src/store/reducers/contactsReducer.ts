@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createSlice } from '@reduxjs/toolkit';
 import { DATA_CONTACT } from 'src/__data__'
 import { ContactDto } from 'src/types/dto/ContactDto'
@@ -27,8 +28,7 @@ export const contactsReducer = (
   }
 }
 
-
-const contactSlice=createSlice({
-  name:'contacts',
-  initialState:
+const contactSlice = createSlice({
+  name: 'contacts',
+  initialState: initialStateContact,
 })

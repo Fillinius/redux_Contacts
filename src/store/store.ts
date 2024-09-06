@@ -1,4 +1,8 @@
-import { legacy_createStore as createStore, combineReducers } from 'redux'
+import {
+  legacy_createStore as createStore,
+  combineReducers,
+  applyMiddleware,
+} from 'redux'
 import { contactsReducer } from './reducers/contactsReducer'
 import { groupContactsReducer } from './reducers/groupContactReducer'
 import { favoriteContactsReducer } from './reducers/favoriteContactsReducer'
