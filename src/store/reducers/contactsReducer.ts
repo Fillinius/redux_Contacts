@@ -1,8 +1,18 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { DATA_CONTACT } from 'src/__data__'
 import { ContactDto } from 'src/types/dto/ContactDto'
 
+const initialStateContact:ContactDto[]=[{
+  id: "",
+  address: "",
+  birthday: "",
+  name: "",
+  phone: "",
+  photo: ""
+}]
+
 export const contactsReducer = (
-  state = DATA_CONTACT,
+  state = initialStateContact,
   { type, payload }: { type: string; payload: ContactDto[] }
 ) => {
   switch (type) {
@@ -16,3 +26,9 @@ export const contactsReducer = (
       return state
   }
 }
+
+
+const contactSlice=createSlice({
+  name:'contacts',
+  initialState:
+})
